@@ -1,0 +1,15 @@
+app:
+  name: Credit Risk Scoring API
+  version: 1.0.0
+  debug: false
+
+server:
+  host: 0.0.0.0
+  port: 8000
+
+model:
+  artifact_path: artifacts/best_model
+  threshold: 0.5
+
+response:
+  include_score: true
