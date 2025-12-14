@@ -1,0 +1,23 @@
+numerical_features:
+  - total_amount
+  - avg_transaction_value
+  - transaction_count
+  - recency_days
+
+categorical_features:
+  - device_type
+  - country
+  - payment_method
+
+rfm:
+  enabled: true
+  recency_days: 30
+  frequency_window_days: 90
+
+encoding:
+  categorical: woe
+  numerical_scaling: standard
+
+feature_selection:
+  method: iv
+  iv_threshold: 0.02
