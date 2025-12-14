@@ -1,0 +1,8 @@
+proxy:
+  enabled: false
+  http: null
+  https: null
+
+timeouts:
+  connect: 10
+  read: 30
