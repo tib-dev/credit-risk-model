@@ -1,0 +1,26 @@
+problem_type: binary_classification
+positive_label: 1
+
+algorithms:
+  - logistic_regression
+  - random_forest
+  - xgboost
+
+logistic_regression:
+  penalty: l2
+  solver: lbfgs
+  max_iter: 1000
+
+random_forest:
+  n_estimators: 300
+  max_depth: 8
+  min_samples_leaf: 20
+  random_state: 42
+
+xgboost:
+  n_estimators: 300
+  max_depth: 6
+  learning_rate: 0.05
+  subsample: 0.8
+  colsample_bytree: 0.8
+  eval_metric: auc
