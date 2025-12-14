@@ -1,0 +1,19 @@
+training:
+  cv_folds: 5
+  scoring: roc_auc
+  n_jobs: -1
+
+tuning:
+  method: grid
+  max_evals: 50
+
+metrics:
+  - accuracy
+  - precision
+  - recall
+  - f1
+  - roc_auc
+
+mlflow:
+  experiment_name: credit-risk-model
+  register_best_model: true
