@@ -6,7 +6,7 @@ __pycache__/
 .env.local
 .env.*.local
 .DS_Store
-.vscode
+.vscode/
 logs/
 *.log
 build
