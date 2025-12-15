@@ -2,11 +2,11 @@ dataset:
   name: ecommerce_transactions
   target: default_flag
 
-paths:
-  data:
+data:
   data_dir: "data"
   raw_dir: "data/raw"
   processed_dir: "data/processed"
+  interim_dir: "data/interim"
 
 reports:
   reports_dir: "reports"
