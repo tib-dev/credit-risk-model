@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  clean:
+    cmd: python scripts/run_clean.py --file transactions.csv
+    deps:
+    - path: configs/data.yaml
+      hash: md5
+      md5: 99e17be1d0dc4dfe5d01208a11157fdd
+      size: 474
+    - path: scripts/run_clean.py
+      hash: md5
+      md5: 58f082ad6521384558b50d68e65d5986
+      size: 1290
+    outs:
+    - path: data/interim/
+      hash: md5
+      md5: 0a5293d0b35b72f5cd934e60fdd4bb7f.dir
+      size: 17357836
+      nfiles: 1

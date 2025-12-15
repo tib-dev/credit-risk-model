@@ -1,0 +1,118 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "credit-risk-model"
+version = "0.1.0"
+description = "End-to-end credit risk probability model using alternative eCommerce data"
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Tibebu K.", email = "wise.tibec@gmail.com" }
+]
+
+keywords = [
+    "credit-risk",
+    "machine-learning",
+    "fintech",
+    "bnpl",
+    "mlops",
+    "fastapi"
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries"
+]
+
+dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "mlflow",
+    "dvc",
+    "dvc-s3",
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "python-dotenv",
+    "pyyaml",
+    "joblib",
+    "xgboost"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "black",
+    "isort",
+    "flake8",
+    "pre-commit",
+    "mypy",
+    "codecov",
+    "doit"
+
+]
+
+fast = [
+    "rapidfuzz"
+]
+
+[project.urls]
+Homepage = "https://github.com/tib-dev/credit-risk-model"
+Documentation = "https://github.com/tib-dev/credit-risk-model/docs"
+Source = "https://github.com/tib-dev/credit-risk-model"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["credit_risk_model*"]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+exclude = '''
+/(
+    \.venv
+  | \.git
+  | \.dvc
+  | mlruns
+  | data
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+src_paths = ["src"]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "mlruns",
+    "data"
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra --cov=credit_risk_model"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["credit_risk_model"]
+omit = [
+    "tests/*",
+    "src/credit_risk_model/api/*"
+]

@@ -1,0 +1,34 @@
+# Data manipulation
+pandas
+numpy
+
+# Machine learning
+scikit-learn
+xgboost
+joblib
+
+# MLOps & experiment tracking
+mlflow
+dvc[s3]
+
+# API development
+fastapi
+uvicorn
+pydantic
+python-dotenv
+pyyaml
+
+# Testing & linting
+pytest
+pytest-cov
+black
+flake8
+isort
+
+# Visualization (for EDA & reports)
+matplotlib
+seaborn
+plotly
+
+# Misc / Utilities
+tqdm

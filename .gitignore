@@ -11,3 +11,4 @@ logs/
 *.log
 build
 src/credit_risk_model.egg-info
+data/raw
