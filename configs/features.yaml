@@ -1,23 +1,78 @@
-numerical_features:
-  - total_amount
-  - avg_transaction_value
-  - transaction_count
-  - recency_days
+# ============================
+# Feature Configuration File
+# ============================
+
+target:
+  name: FraudResult
+  positive_class: 1
+
+identifiers:
+  - TransactionId
+  - BatchId
+  - AccountId
+  - SubscriptionId
+  - CustomerId
+
+datetime:
+  column: TransactionStartTime
+  timezone: UTC
+
+aggregation:
+  groupby: CustomerId
+  features:
+    total_transaction_amount:
+      column: Amount
+      operation: sum
+    average_transaction_amount:
+      column: Amount
+      operation: mean
+    transaction_count:
+      column: TransactionId
+      operation: count
+    std_transaction_amount:
+      column: Amount
+      operation: std
+
+numeric_features:
+  - "Value"
+  - "total_transaction_amount"
+  - "avg_transaction_amount"
+  - "transaction_count"
+  - "std_transaction_amount"
+  - "transaction_hour"
+  - "transaction_day"
+  - "transaction_month"
+  - "transaction_year"
 
 categorical_features:
-  - device_type
-  - country
-  - payment_method
-
-rfm:
-  enabled: true
-  recency_days: 30
-  frequency_window_days: 90
+  - "ProviderId"
+  - "ProductId"
+  - "ProductCategory"
+  - "ChannelId"
+  - "PricingStrategy"
+  - "CurrencyCode"
 
 encoding:
-  categorical: woe
-  numerical_scaling: standard
+  method: woe # options: onehot | label | woe
+  woe:
+    variables:
+      - CurrencyCode
+      - ProviderId
+      - ProductCategory
+      - ChannelId
+    event: 1
+    non_event: 0
+    smoothing: 0.5
 
-feature_selection:
-  method: iv
-  iv_threshold: 0.02
+missing_values:
+  numeric:
+    strategy: median
+  categorical:
+    strategy: most_frequent
+
+scaling:
+  method: standard # options: standard | minmax
+
+output:
+  drop_original_datetime: true
+  drop_identifiers: true
