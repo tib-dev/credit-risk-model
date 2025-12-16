@@ -17,3 +17,23 @@ stages:
       md5: 0a5293d0b35b72f5cd934e60fdd4bb7f.dir
       size: 17357836
       nfiles: 1
+  features:
+    cmd: python scripts/run_features.py --file cleaned_transactions.csv
+    deps:
+    - path: configs/features.yaml
+      hash: md5
+      md5: 535e50ed738b110d4c90791fc91c22a0
+      size: 1503
+    - path: data/interim/cleaned_transactions.csv
+      hash: md5
+      md5: 17e0f383bf4fb22332b1c0bedf7a2fb4
+      size: 17357836
+    - path: scripts/run_features.py
+      hash: md5
+      md5: 32d815d378115d44f100577cfb700671
+      size: 2361
+    outs:
+    - path: data/processed/features.parquet
+      hash: md5
+      md5: db446162aee030b95e43fe1ffd29dc60
+      size: 941666
