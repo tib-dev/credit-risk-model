@@ -45,7 +45,8 @@ dependencies = [
     "python-dotenv",
     "pyyaml",
     "joblib",
-    "xgboost"
+    "xgboost",
+    "xverse"
 ]
 
 [project.optional-dependencies]
