@@ -3,14 +3,14 @@ name: CI/CD Pipeline - Code Quality and Testing
 # Triggers the workflow on push or pull request events for the main branch
 on:
   push:
-    branches: [main, master]
+    branches: [ main, master ]
   pull_request:
-    branches: [main, master]
+    branches: [ main, master ]
 
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
-
+    
     # Use a matrix strategy to test against different Python versions
     strategy:
       matrix:

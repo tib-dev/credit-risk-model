@@ -1,6 +1,8 @@
 # Data manipulation
 pandas
 numpy
+# Feature Engineering
+xverse
 
 # Machine learning
 scikit-learn
