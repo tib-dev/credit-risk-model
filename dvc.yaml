@@ -30,16 +30,15 @@ stages:
   # # -------------------------------------------
   # # Stage 3: Feature Engineering
   # # -------------------------------------------
-  # features:
-  #   cmd: python -m credit_risk_model.features.feature_builder \
-  #         --config configs/features.yaml
-  #   deps:
-  #     - src/credit_risk_model/features/feature_builder.py
-  #     - src/credit_risk_model/features/woe_iv.py
-  #     - configs/features.yaml
-  #     - data/processed/preprocessed.parquet
-  #   outs:
-  #     - data/processed/features.parquet
+  features:
+    cmd: python scripts/run_features.py --file cleaned_transactions.csv
+
+    deps:
+      - scripts/run_features.py
+      - configs/features.yaml
+      - data/interim/cleaned_transactions.csv
+    outs:
+      - data/processed/features.parquet
 
   # # -------------------------------------------
   # # Stage 4: Train model
