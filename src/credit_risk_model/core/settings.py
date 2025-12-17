@@ -33,7 +33,6 @@ DEFAULT_CONFIG_FILES = (
     "data.yaml",
     "features.yaml",
     "model.yaml",
-    "train.yaml",
     "api.yaml",
 )
 
@@ -144,8 +143,8 @@ class Settings:
         return self.config.get("model", {})
 
     @property
-    def TRAIN(self) -> Dict:
-        return self.config.get("training", self.config.get("train", {}))
+    def TUNING(self) -> Dict:
+        return self.config.get("tuning", {})
 
     @property
     def API(self) -> Dict:
