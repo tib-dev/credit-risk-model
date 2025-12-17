@@ -14,7 +14,7 @@ jobs:
     # Use a matrix strategy to test against different Python versions
     strategy:
       matrix:
-        python-version: ["3.9", "3.10"] # Standard versions for modern ML projects
+        python-version: ["3.10", "3.11"] # Standard versions for modern ML projects
 
     steps:
     - name: Checkout repository code
