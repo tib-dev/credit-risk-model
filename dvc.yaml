@@ -13,22 +13,8 @@ stages:
       - data/interim/
 
 
-
-  # -------------------------------------------
-  # Stage 2: Preprocess clean data
-  # -------------------------------------------
-  # preprocess:
-  #   cmd: python -m credit_risk_model.data.preprocess \
-  #         --config configs/data.yaml
-  #   deps:
-  #     - src/credit_risk_model/data/preprocess.py
-  #     - configs/data.yaml
-  #     - data/interim/clean.csv
-  #   outs:
-  #     - data/processed/preprocessed.parquet
-
   # # -------------------------------------------
-  # # Stage 3: Feature Engineering
+  # # Stage 2: Feature Engineering
   # # -------------------------------------------
   features:
     cmd: python scripts/run_features.py --file cleaned_transactions.csv
@@ -41,43 +27,14 @@ stages:
       - data/processed/features.parquet
 
   # # -------------------------------------------
-  # # Stage 4: Train model
+  # # Stage 3: Train model
   # # -------------------------------------------
-  # train:
-  #   cmd: python -m credit_risk_model.models.train \
-  #         --config configs/train.yaml \
-  #         --model_dir models
-  #   deps:
-  #     - src/credit_risk_model/models/train.py
-  #     - src/credit_risk_model/models/evaluate.py
-  #     - data/processed/features.parquet
-  #     - configs/train.yaml
-  #     - configs/model.yaml
-  #   outs:
-  #     - models/best_model.pkl
 
-  # # -------------------------------------------
-  # # Stage 5: Evaluate model
-  # # -------------------------------------------
-  # evaluate:
-  #   cmd: python -m credit_risk_model.models.evaluate \
-  #         --model models/best_model.pkl \
-  #         --features data/processed/features.parquet \
-  #         --metrics models/metrics.json
-  #   deps:
-  #     - src/credit_risk_model/models/evaluate.py
-  #     - models/best_model.pkl
-  #     - data/processed/features.parquet
-  #     - configs/train.yaml
-  #   metrics:
-  #     - models/metrics.json
-
-  # # -------------------------------------------
-  # # Stage 6: Register best model
-  # # -------------------------------------------
-  # register:
-  #   cmd: python -m credit_risk_model.models.register \
-  #         --model models/best_model.pkl
-  #   deps:
-  #     - src/credit_risk_model/models/register.py
-  #     - models/best_model.pkl
+  train:
+    cmd: python scripts/run_training.py --file features_with_target.parquet
+    deps:
+      - scripts/run_training.py
+      - configs/model.yaml
+      - data/processed/features_with_target.parquet
+    outs:
+      - mlruns/
