@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount config so changes in YAML don't require a rebuild
+      - ../config:/app/config
+      # Mount mlruns so the API can load the logged models
+      - ../mlruns:/app/mlruns
+      # Mount data if the API needs to look up processed files
+      - ../data:/app/data
+    environment:
+      - MLFLOW_TRACKING_URI=file:///app/mlruns
+      - ENV=production
+    restart: always
